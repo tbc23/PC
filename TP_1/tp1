@@ -1,0 +1,48 @@
+package com.company;
+
+class MyThread extends Thread {  // Maneira 1 de criar threads
+    public void run() {
+        for (int i = 0; i < 100; ++i)
+        	System.out.println("Bruh");
+    }
+}
+
+class MyRunnable implements Runnable {  // Maneira 2 de criar threads
+	public void run() {
+	    try {  
+	        for (int i = 0; i < 100; ++i){
+	        	System.out.println("Bruh");
+	        	Thread.sleep(500);
+	        }
+	    } catch (InterruptedException e) {
+	    	System.out.println("Thread interrompida");
+	    }
+    }
+}
+
+class Printer extends Thread {
+	final int I;
+
+	public Printer(int I) {
+		this.I = I;
+	}
+
+	public void run() {
+		for (int i = 0; i < I; ++i ) {
+			System.out.println(i + 1);
+		}
+	}
+}
+
+class myMain {
+    public static void main (String[] args) throws InterruptedException {
+    	final int N = Integer.parseInt(args[0]);
+    	final int I = Integer.parseInt(args[1]);
+    	Thread a[] = new Thread[N];
+    	for (int i=0; i<N; i++) 
+    		a[i] = new Printer(I);
+    	
+    	
+    	System.out.println("Fim");
+    }
+}
