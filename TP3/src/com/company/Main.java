@@ -3,11 +3,6 @@ import java.util.Random;
 
 class Transferer extends Thread {
     final Bank b;
-
-    Transferer(Bank b) {
-        this.b = b;
-    }
-
     public void run() {
         try {
             Random r = new Random();
@@ -23,25 +18,22 @@ class Transferer extends Thread {
 class Checker extends Thread {
     final Bank b;
     Checker(Bank b) { this.b = b; }
-    public void run() {
+    public vpod run() {
         try {
             int[] a = {0,1,2,3,4};
             while (true) {
-                int sum = b.totalBalance(a);
+
             }
         } catch (Exception e) { }
     }
 }
 
 
-
 class TesteBanco {
-    public static void main(String[] args) throws InvalidAccount {
-        int N = 10;
-        Bank b = new BankImpl(N);
-        for (int i = 0; i < N ; ++i)
-            b.deposit(i,10000);
-        Thread t1 = new Thread();
-        Thread t2 = new Thread();
+    public static void main(String[] args) {
+	int N = 10;
+	Bank b = new BankImpl(N);
+	for (int i = 0; i < N ; ++i)
+	    b.deposit(i,10000);
     }
 }
