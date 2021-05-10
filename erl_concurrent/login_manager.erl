@@ -64,9 +64,8 @@ loop(Map) ->
                     loop(Map)
             end;
         {online, From} ->
-            % From ! {[User || [{User, {_,true}}] <- dict:to_list(Map)]}, 
+            From ! {[User || [{User, {_,true}}] <- dict:to_list(Map)]}, 
             loop(Map);
-        
         {stop, From} ->
             From ! {ok, ?MODULE}
     
